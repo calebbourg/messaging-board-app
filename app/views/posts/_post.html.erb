@@ -1,0 +1,30 @@
+
+<div class="text-center">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title"><%= link_to post.title, post_path(post) %></h3>
+	  </div>
+	  <div class="panel-body">
+	    <%= post.body %>
+	  </div>
+	  <div class="panel-footer">
+	  	<div class="dropdown">
+		  	<% if user_signed_in? %>
+		  	   <button class="btn btn-default btn-block" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Leave a Comment
+		  	   	  <span class="caret"></span>
+		  	  </button>	
+		  	  <ul class="dropdown-menu col-md-10" aria-labelledby="dLabel" id="comment-dropdown-menu">
+		  	  	<div class="text-center">
+	                <%= bootstrap_form_for :comment , url: post_comments_path(post) do |f| %>
+		  	           <%= f.text_area :body, required: true %>
+		  	           <%= f.submit %>
+		  	        <% end %>
+	  	       </div>
+              </ul>
+		  	<% else %>
+		  	    <a class='btn btn-default disabled' id="comment-button">Must be logged in to comment</a>
+		  	<% end %>
+	  </div>
+	</div>
+</div>
+

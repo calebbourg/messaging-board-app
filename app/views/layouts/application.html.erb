@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MessagingBoardApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+  <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to 'Home', root_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><% if user_signed_in? %>
+        	  <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+        	  <% else %>
+        	    <%= link_to 'Log In', '#signinModal', data: { toggle: 'modal', target: '#signinModal'} %>
+        	    <% end %>
+        </li>
+        <li><%= link_to 'Sign Up', '#signupModal', data: { toggle: 'modal', target: '#signupModal' } %>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<%= render partial: 'devise/registrations/signup' %>
+
+<%= yield %>
+
+<%= render partial: 'devise/registrations/signin' %>
+
+
+</body>
+</html>
