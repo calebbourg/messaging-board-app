@@ -26,6 +26,7 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap_form'
 gem 'kaminari'
+gem 'faker'
 
 
 # Use ActiveModel has_secure_password
